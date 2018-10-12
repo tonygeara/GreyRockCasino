@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group>
+
+    <item android:title="Casino">
+        <menu>
+            <item
+                android:id="@+id/AboutCasino"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="About" />
+            <item
+                android:id="@+id/Gaming"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="Gaming" />
+            <item
+                android:id="@+id/Winners"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="Winners" />
+            <item
+                android:id="@+id/Hours"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="Hours" />
+            <item
+                android:id="@+id/Contact"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="Contact" />
+            <item
+                android:id="@+id/Tourism"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="Tourism" />
+        </menu>
+    </item>
+
+    <!--Poker-->
+    <item android:title="Poker">
+        <menu>
+            <item
+                android:id="@+id/Whatshappening"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="What's Happening" />
+            <item
+                android:id="@+id/Pokertournament"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="Poker Tournament" />
+            <item
+                android:id="@+id/Promotionspoker"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="Promotions" />
+            <item
+                android:id="@+id/Badbeat"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="Bad Beat" />
+        </menu>
+    </item>
+
+
+    <!--Restaurants-->
+    <item android:title="Restaurants">
+        <menu>
+            <item
+                android:id="@+id/Restaurants"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="Fiddlehead Café" />
+            <item
+                android:id="@+id/ValleyRestaurant"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="Valley View Restaurant" />
+        </menu>
+    </item>
+
+
+    <!--/* Rewards-Totem Club -->
+    <!--*/ -->
+    <item android:title="Rewards-Totem Club">
+        <menu>
+            <item
+                android:id="@+id/Promotions"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Promotions" />
+            <item
+                android:id="@+id/Proabout"
+                android:icon="@drawable/ic_menu_send"
+                android:title="About" />
+
+        </menu>
+    </item>
+
+
+
+    <!--Careers -->
+
+    <item android:title="Careers">
+        <menu>
+            <item
+                android:id="@+id/about"
+                android:icon="@drawable/ic_menu_share"
+                android:title="About" />
+            <item
+                android:id="@+id/Jobs"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Available Jobs" />
+        </menu>
+    </item>
+
+
+
+    <item android:title="Events">
+        <menu>
+            <item
+                android:id="@+id/Events"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="Events" />
+        </menu>
+    </item>
+
+    </group>
+</menu>
