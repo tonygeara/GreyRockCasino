@@ -5,31 +5,34 @@
 
     <group>
 
-    <item android:title="Casino">
+    <item android:title="Casino"
+
+        >
         <menu>
             <item
                 android:id="@+id/AboutCasino"
-                android:icon="@drawable/ic_menu_manage"
-                android:title="About" />
+                android:icon="@drawable/search"
+                android:title="About"
+                />
             <item
                 android:id="@+id/Gaming"
-                android:icon="@drawable/ic_menu_manage"
+                android:icon="@drawable/cash"
                 android:title="Gaming" />
             <item
                 android:id="@+id/Winners"
-                android:icon="@drawable/ic_menu_manage"
+                android:icon="@drawable/winner"
                 android:title="Winners" />
             <item
                 android:id="@+id/Hours"
-                android:icon="@drawable/ic_menu_manage"
+                android:icon="@drawable/hours"
                 android:title="Hours" />
             <item
                 android:id="@+id/Contact"
-                android:icon="@drawable/ic_menu_manage"
+                android:icon="@drawable/phonecall"
                 android:title="Contact" />
             <item
                 android:id="@+id/Tourism"
-                android:icon="@drawable/ic_menu_manage"
+                android:icon="@drawable/tourism"
                 android:title="Tourism" />
         </menu>
     </item>
@@ -39,19 +42,19 @@
         <menu>
             <item
                 android:id="@+id/Whatshappening"
-                android:icon="@drawable/ic_menu_manage"
+                android:icon="@drawable/questions"
                 android:title="What's Happening" />
             <item
                 android:id="@+id/Pokertournament"
-                android:icon="@drawable/ic_menu_manage"
+                android:icon="@drawable/pokertournament"
                 android:title="Poker Tournament" />
             <item
                 android:id="@+id/Promotionspoker"
-                android:icon="@drawable/ic_menu_manage"
+                android:icon="@drawable/moneybag"
                 android:title="Promotions" />
             <item
                 android:id="@+id/Badbeat"
-                android:icon="@drawable/ic_menu_manage"
+                android:icon="@drawable/gold"
                 android:title="Bad Beat" />
         </menu>
     </item>
@@ -62,11 +65,11 @@
         <menu>
             <item
                 android:id="@+id/Restaurants"
-                android:icon="@drawable/ic_menu_manage"
+                android:icon="@drawable/restaurant"
                 android:title="Fiddlehead Café" />
             <item
                 android:id="@+id/ValleyRestaurant"
-                android:icon="@drawable/ic_menu_manage"
+                android:icon="@drawable/restaurant"
                 android:title="Valley View Restaurant" />
         </menu>
     </item>
@@ -78,11 +81,11 @@
         <menu>
             <item
                 android:id="@+id/Promotions"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/moneybag"
                 android:title="Promotions" />
             <item
                 android:id="@+id/Proabout"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/search"
                 android:title="About" />
 
         </menu>
@@ -96,11 +99,11 @@
         <menu>
             <item
                 android:id="@+id/about"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/search"
                 android:title="About" />
             <item
                 android:id="@+id/Jobs"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/suitcase"
                 android:title="Available Jobs" />
         </menu>
     </item>
@@ -111,7 +114,7 @@
         <menu>
             <item
                 android:id="@+id/Events"
-                android:icon="@drawable/ic_menu_manage"
+                android:icon="@drawable/gold"
                 android:title="Events" />
         </menu>
     </item>
