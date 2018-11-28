@@ -1,27 +1,20 @@
 package com.example.tony.greycasino;
 
-import android.app.Notification;
+import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.ColorFilter;
-import android.graphics.PorterDuff;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.annotation.RequiresApi;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.app.NotificationManagerCompat;
-import android.support.v4.content.FileProvider;
 import android.support.v4.view.ViewPager;
 import android.util.Log;
-import android.view.LayoutInflater;
+import android.util.Pair;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -31,110 +24,76 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.view.animation.LinearInterpolator;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.MediaController;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.VideoView;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.nodes.Node;
+import org.jsoup.select.Elements;
+
+import java.io.IOException;
+import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import static android.graphics.PorterDuff.*;
-
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener , OnMapReadyCallback {
     private static final String TAG = "MAINACTIVITY";
+    public static GoogleMap mMap;
     Timer timer;
     Timer timer2;
     Timer timer3;
     Timer timer4;
+    private TextView textView;
+    private TextView textView2;
 
-    ImageView money;
-
-
-
+    public static String bon = "";
+    public static String badb = "";
     Button notification ;
     String CHANNEL_ID = "my_channel_02";
 
 
 
+    @SuppressLint("ResourceType")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        toolbar.setLogo(R.drawable.logo);
+
+        final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        // call fragment map
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
 
         setSupportActionBar(toolbar);
+        Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
 
         createNotificationChannel();
-
-
-
-
-
-        VideoView videoView = (VideoView)findViewById(R.id.video);
-        videoView.setMinimumWidth(383);
-        videoView.setMinimumHeight(135);
-        String path = "android.resource://" + getPackageName() + "/" + R.raw.greyrock;
-        videoView.setVideoURI(Uri.parse(path));
-                videoView.setMediaController(new MediaController(this));
-        videoView.start();
 
         final ViewPager viewPager1 = (ViewPager)findViewById(R.id.pager1);
         viewPager1.setMinimumHeight(50);
         viewPager1.setMinimumWidth(25);
+        ParserTask task = new ParserTask();
+        task.execute();
 
-        final ViewPager viewPager2 = (ViewPager)findViewById(R.id.pager2);
-        viewPager2.setMinimumHeight(50);
-        viewPager2.setMinimumWidth(25);
-
-        final ViewPager viewPager3 = (ViewPager)findViewById(R.id.pager3);
-        viewPager2.setMinimumHeight(50);
-        viewPager2.setMinimumWidth(25);
-
-        final ViewPager viewPager4 = (ViewPager)findViewById(R.id.pager4);
-        viewPager2.setMinimumHeight(50);
-        viewPager2.setMinimumWidth(25);
 
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
         viewPager1.setAdapter(viewPagerAdapter);
 
-        ViewPager2Adapter viewPager2Adapter = new ViewPager2Adapter(this);
-        viewPager2.setAdapter(viewPager2Adapter);
-
-        viewPager3.setAdapter(viewPager2Adapter);
-        viewPager4.setAdapter(viewPager2Adapter);
-
-//        final LinearLayout gallery = findViewById(R.id.gallery);
 //
-//        LayoutInflater inflater = LayoutInflater.from(this);
-//         final Integer [] images = {R.drawable.hotseat,R.drawable.fiddle,R.drawable.magnificent,R.drawable.winter,R.drawable.totem,R.drawable.second};
-//        for (int i = 0 ; i < 6; i++){
-//
-//            final View view = inflater.inflate(R.layout.items,gallery,false);
-//            final ImageView image = view.findViewById(R.id.imageitems);
-//            final int j = i;
-//            TimerTask timeritems = new TimerTask() {
-//                @Override
-//                public void run() {
-//                    image.setImageResource(images[j]);
-//
-//                }
-//
-//            };
-//            gallery.addView(view);
-//            timer = new Timer();
-//            timer.schedule(timeritems, 3000, 2000);
-//
-//        }
 
         TimerTask timerTask = new TimerTask() {
                 @Override
@@ -143,7 +102,7 @@ public class MainActivity extends AppCompatActivity
                         @Override
                         public void run() {
                             viewPager1.setCurrentItem(viewPager1.getCurrentItem() + 1);
-                            if (viewPager1.getCurrentItem() == 2 ){
+                            if (viewPager1.getCurrentItem() == 6 ){
                                 viewPager1.setCurrentItem(0);
                             }
                         }
@@ -154,59 +113,7 @@ public class MainActivity extends AppCompatActivity
             timer.schedule(timerTask, 3000, 4000);
 
 
-        TimerTask timer2Task = new TimerTask() {
-            @Override
-            public void run() {
-                viewPager2.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        viewPager2.setCurrentItem(viewPager2.getCurrentItem() + 1);
-                        if (viewPager2.getCurrentItem() == 4 ){
-                            viewPager2.setCurrentItem(0);
-                        }
-                    }
-                });
-            }
-        };
-        timer2 = new Timer();
-        timer2.schedule(timer2Task, 3000, 2000);
 
-        TimerTask timer3Task = new TimerTask() {
-            @Override
-            public void run() {
-                viewPager2.post(new Runnable() {
-                    @Override
-                    public void run() {
-
-                        viewPager3.setCurrentItem(viewPager3.getCurrentItem() + 2);
-
-                        if (viewPager3.getCurrentItem() == 4 ){
-                            viewPager3.setCurrentItem(0);
-                        }
-                    }
-                });
-            }
-        };
-        timer3 = new Timer();
-        timer3.schedule(timer3Task, 3000, 2000);
-
-        TimerTask timer4Task = new TimerTask() {
-            @Override
-            public void run() {
-                viewPager2.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        viewPager4.setCurrentItem(viewPager4.getCurrentItem() + 3);
-
-                        if (viewPager4.getCurrentItem() == 4 ){
-                            viewPager4.setCurrentItem(0);
-                        }
-                    }
-                });
-            }
-        };
-        timer4 = new Timer();
-        timer4.schedule(timer4Task, 3000, 2000);
 
 
 
@@ -221,6 +128,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
 
+
     }
 
     @Override
@@ -231,6 +139,24 @@ public class MainActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
+    }
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        mMap = googleMap;
+        mMap.setBuildingsEnabled(true);
+        mMap.setMinZoomPreference(6.0f);
+        mMap.setMaxZoomPreference(18.0f);
+
+        // Add a marker in Sydney and move the camera
+        LatLng greyrock = new LatLng(47.373417  , -68.306244);
+        mMap.addMarker(new MarkerOptions().position(greyrock).title("Grey Rock Casino"));
+        float zoomlevel = 16.0f;
+        mMap.getUiSettings().setZoomControlsEnabled(true);
+        mMap.getUiSettings().setMyLocationButtonEnabled(true);
+        mMap.getUiSettings().setMapToolbarEnabled(true);
+        mMap.getUiSettings().setAllGesturesEnabled(true);
+
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(greyrock,zoomlevel));
     }
 
     @Override
@@ -249,12 +175,25 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            Intent intent = new Intent(getApplicationContext(),hoursofoperationmenu.class);
+            startActivity(intent);
+        }else if (id == R.id.contactinformation) {
+            Intent intent = new Intent(getApplicationContext(),contactinformationmenu.class);
+            startActivity(intent);
+        }
+
+        else if (id == R.id.action_help) {
+            Intent intent = new Intent(getApplicationContext(),aboutcasinomenu.class);
+            startActivity(intent);
+        }
+        else if (id == R.id.action_exit) {
+            finish();
+            System.exit(0);
         }
 
         return super.onOptionsItemSelected(item);
     }
-
+// call activities
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
@@ -272,7 +211,9 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.Winners) {
-            Intent intent = new Intent(getApplicationContext(),winnerscasino.class);
+//            Intent intent = new Intent(getApplicationContext(),winnerscasino.class);
+//            startActivity(intent);
+            Intent intent = new Intent(MainActivity.this,winnerscasino.class);
             startActivity(intent);
 
         } else if (id == R.id.Hours) {
@@ -282,28 +223,65 @@ public class MainActivity extends AppCompatActivity
         }else if (id == R.id.Contact) {
             Intent intent = new Intent(getApplicationContext(),contactcasino.class);
             startActivity(intent);
-        }else if (id == R.id.Tourism) {
+        }
+        else if (id == R.id.Bingo) {
+            Intent intent = new Intent(getApplicationContext(),bingo.class);
+            startActivity(intent);
+        }else if (id == R.id.Whatishappeningbingo) {
+            Intent intent = new Intent(getApplicationContext(),bingowhatshappening.class);
+            startActivity(intent);
+
+        }else if (id == R.id.pricingbingo) {
+
+            Intent intent = new Intent(getApplicationContext(),pricingbingo.class);
+            startActivity(intent);
+        }
+
+
+
+
+        else if (id == R.id.Tourism) {
             Intent intent = new Intent(getApplicationContext(),tourismcasino.class);
             startActivity(intent);
         }else if (id == R.id.Whatshappening) {
+            Intent intent = new Intent(getApplicationContext(),poker.class);
+            startActivity(intent);
 
         }else if (id == R.id.Pokertournament) {
+            Intent intent = new Intent(getApplicationContext(),pokertournament.class);
+            startActivity(intent);
+
 
         }else if (id == R.id.Promotionspoker) {
+            Intent intent = new Intent(getApplicationContext(),promotionsrecyclerview.class);
+            startActivity(intent);
 
         }else if (id == R.id.Badbeat) {
 
+            Intent intent = new Intent(getApplicationContext(),badbeatmenu.class);
+            startActivity(intent);
         }else if (id == R.id.Restaurants) {
+            Intent intent = new Intent(getApplicationContext(),thefiedlcafe.class);
+            startActivity(intent);
 
         }else if (id == R.id.ValleyRestaurant) {
+            Intent intent = new Intent(getApplicationContext(),valleyrestaurant.class);
+            startActivity(intent);
 
         } else if (id == R.id.Promotions) {
+/** has to be done */
+        } else if (id == R.id.proClaim) {
+            Intent intent = new Intent(getApplicationContext(),rewards.class);
+            startActivity(intent);
 
-        }else if (id == R.id.Proabout) {
+        } else if (id == R.id.Proabout) {
 
+
+/** has to be done */
         }else if (id == R.id.about) {
-
+/** has to be done */
         }else if (id == R.id.Jobs) {
+/** has to be done */
 
         }else if (id == R.id.Events) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -320,13 +298,13 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onDestroy() {
 
-timer2.cancel();
+        Log.i(TAG, "onDestroy: CALLLEEEEDDDDD");
         timer.cancel();
-        timer3.cancel();
-        timer4.cancel();
         super.onDestroy();
-    }
+        Log.i(TAG, "onDestroy: FINISHEDDDDDDD");
 
+    }
+// send notification to users
     private void createNotificationChannel() {
 
         // Create the NotificationChannel, but only on API 26+ because
@@ -345,14 +323,15 @@ timer2.cancel();
         }
     }
 
+    // sending notification to users
     @RequiresApi(api = Build.VERSION_CODES.O)
     public void sendnotification() {
 
         Log.d(TAG, "sendnotification: ON");
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, CHANNEL_ID)
                     .setSmallIcon(R.drawable.logo)
-                    .setContentTitle("GREYCAS")
-                    .setContentText("HELOO FROMM TONY HEREEEEEEE")
+                    .setContentTitle("GREY ROCK CASINO")
+                    .setContentText("GET READY FOR OUR NEW COMING EVENTS AT GREY ROCK CASINO, CELEBRATE CHRISTMAS AND NEW YEAR EVE WITH US AND ENTER THE DRAW TO WIN A GREAT PRIZES . WE ARE WAITING FOR YOU ...")
                     .setPriority(NotificationCompat.PRIORITY_DEFAULT);
 
         NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
@@ -363,6 +342,149 @@ timer2.cancel();
 
         Log.d(TAG, "sendnotification: OFF");
 
+    }
+
+
+// dial th ephone number of casino
+    public void dialContactPhone(View view) {
+        startActivity(new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", "(506) 735-2820", null)));
+    }
+
+    // send an email to the casino
+    public void sendEmail(View view) {
+        Intent mailIntent = new Intent(Intent.ACTION_VIEW);
+        Uri data = Uri.parse("mailto:?subject=" + "Subject:"+ "&body=" + "Please type in your text here , thank you \n Grey Rock Casino " + "&to=" + "info@greyrock-casino.com");
+        mailIntent.setData(data);
+        startActivity(Intent.createChooser(mailIntent, "Send mail..."));
+    }
+
+    @Override
+    protected void onStart() {
+        Log.i(TAG, "onStart: callleeeeeeeeeedddddddd");
+        super.onStart();
+        Log.i(TAG, "onStart: eeennndddddddddddddddd");
+
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
+    @Override
+    protected void onResume() {
+        Log.i(TAG, "onResume: cccccccaaaaaallllllllllleeeeeeeeeeeeddddddddddddddd");
+        super.onResume();
+        Log.i(TAG, "onResume: eeeeeeeeeeeeeeeeeeennnnnnnnnnnnnnnnnnddddddddddddddddddd");
+
+    }
+
+    @Override
+    protected void onPostResume() {
+        Log.i(TAG, "onPostResume: cccccccaaaaaallllllllllleeeeeeeeeeeeddddddddddddddd");
+
+        super.onPostResume();
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        Log.i(TAG, "onRestoreInstanceState: caalllledddddddd");
+        super.onRestoreInstanceState(savedInstanceState);
+    }
+
+    @Override
+    protected void onRestart() {
+        Log.i(TAG, "onRestart: calllled");
+        super.onRestart();
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        Log.i(TAG, "onSaveInstanceState: callllleeeeeeeeeeeeedddddddd");
+        super.onSaveInstanceState(outState, outPersistentState);
+    }
+
+    @SuppressLint("SetTextI18n")
+    public void displayResults(Pair<String, String> pair) {
+
+        textView = findViewById(R.id.result);
+        textView2 = findViewById(R.id.result2);
+        StringBuilder sb = new StringBuilder("Bonanza ");
+        sb.append(pair.first).append(" BadBeat ").append(pair.second);
+        textView.setText("$" + badb);
+        textView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textView.startAnimation(AnimationUtils.loadAnimation(MainActivity.this,R.anim.anim));
+            }
+        });
+
+        textView2.setText("$" + bon);
+        textView2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                textView2.startAnimation(AnimationUtils.loadAnimation(MainActivity.this,R.anim.anim));
+            }
+        });
+
+
+    }
+// parse server for bonanza and badbeat
+    private class ParserTask extends AsyncTask<Void, Void, Pair<String, String>> {
+
+        private static final String URL = "http://www.greyrockcasino.com/en/";
+        private static final String DIV_BONANZA = "div.top-banner-bingo-content";
+        private static final String DIV_BAD_BEAT = "div.top-banner-poker-content";
+        private static final int INDEX_CHILD = 1;
+        private static final int INDEX_ELEMENT = 0;
+
+
+        @Override
+        protected Pair<String, String> doInBackground(Void... voids) {
+
+            try {
+                Document document = Jsoup.connect(URL).get();
+                // select document
+                Elements bonanzaElements = document.select(DIV_BONANZA);
+                Elements badBeatElements = document.select(DIV_BAD_BEAT);
+
+                // get the index for each element
+                Element bonanzaElement = bonanzaElements.get(INDEX_ELEMENT);
+                Element badBeatElement = badBeatElements.get(INDEX_ELEMENT);
+
+                // substring the index for bnanza
+                Node bonanza = bonanzaElement.childNode(INDEX_CHILD);
+                String bonanzaString = bonanza.toString();
+                bonanzaString = bonanzaString.substring(bonanzaString.indexOf('$') + 1, bonanzaString.lastIndexOf('<'));
+                bon = bonanzaString;
+                Log.i("", "doInBackgroundsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss: " + bon);
+
+
+                Node badBeat = badBeatElement.childNode(INDEX_CHILD);
+                String badBeatString = badBeat.toString();
+                badBeatString = badBeatString.substring(badBeatString.indexOf('$') + 1, badBeatString.lastIndexOf('<'));
+                badb = badBeatString;
+                Log.i("", "doInBackgroundsssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss: " + badb);
+
+
+                return new Pair<>(bonanzaString, badBeatString);
+
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Pair<String, String> stringStringPair) {
+            super.onPostExecute(stringStringPair);
+            displayResults(stringStringPair);
+        }
     }
 
 }

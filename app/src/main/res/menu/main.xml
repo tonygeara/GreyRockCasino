@@ -2,17 +2,23 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/contactinformation"
+        android:orderInCategory="100"
+        android:title="Contact"
+        app:showAsAction="never"
+        />
+    <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
-        android:title="@string/action_settings"
+        android:title="Hours of Operation"
         app:showAsAction="never"
-        android:icon="@mipmap/logo"/>
+       />
     <item
         android:id="@+id/action_help"
         android:orderInCategory="100"
-        android:title="Help"
+        android:title="About Grey Rock Casino"
         app:showAsAction="never"
-        android:icon="@drawable/search"/>
+        />
     <item
         android:id="@+id/action_exit"
         android:orderInCategory="100"

@@ -21,6 +21,7 @@
             <item
                 android:id="@+id/Winners"
                 android:icon="@drawable/winner"
+                android:iconTint="@color/common_google_signin_btn_text_dark"
                 android:title="Winners" />
             <item
                 android:id="@+id/Hours"
@@ -36,6 +37,27 @@
                 android:title="Tourism" />
         </menu>
     </item>
+
+        <item android:title="Bingo"
+
+            >
+            <menu>
+                <item
+                    android:id="@+id/Bingo"
+                    android:icon="@drawable/bingo"
+                    android:title="BINGO"
+                    />
+                <item
+                    android:id="@+id/Whatishappeningbingo"
+                    android:icon="@drawable/search"
+                    android:title="What's happening" />
+                <item
+                    android:id="@+id/pricingbingo"
+                    android:icon="@drawable/winner"
+                    android:title="Pricing" />
+
+            </menu>
+        </item>
 
     <!--Poker-->
     <item android:title="Poker">
@@ -83,6 +105,10 @@
                 android:id="@+id/Promotions"
                 android:icon="@drawable/moneybag"
                 android:title="Promotions" />
+            <item
+                android:id="@+id/proClaim"
+                android:icon="@drawable/rewards"
+                android:title="Claim you rewards" />
             <item
                 android:id="@+id/Proabout"
                 android:icon="@drawable/search"
