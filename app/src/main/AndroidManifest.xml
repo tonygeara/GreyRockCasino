@@ -25,7 +25,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity
-            android:name=".MainActivity"
+            android:name=".splash"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -39,7 +39,10 @@
             android:name="com.google.android.gms.ads.AD_MANAGER_APP"
             android:value="true" />
 
+        <activity android:name=".MainActivity" />
+
         <activity android:name=".casinoabout" />
+        <activity android:name=".rewardsRecyclerview" />
         <activity android:name=".gamingcasino" />
         <activity android:name=".winnerscasino" />
         <activity android:name=".hourscasino" />
@@ -51,6 +54,9 @@
         <activity android:name=".badbeatmenu" />
         <activity android:name=".thefiedlcafe" />
         <activity android:name=".valleyrestaurant" />
+        <activity android:name=".availableJobsrecycler" />
+        <activity android:name=".eventsrecyclerview" />
+        <!--<activity android:name=".JobViewActivity" />-->
         <activity android:name=".promotions" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -73,7 +79,14 @@
         <activity android:name=".bingo" />
         <activity android:name=".bingowhatshappening" />
         <activity android:name=".pricingbingo" />
-        <activity android:name=".promotionsrecyclerview"></activity>
+        <activity android:name=".promotionsrecyclerview" />
+        <activity android:name=".rewardsabout" />
+        <activity android:name=".careersabout" />
+        <activity android:name=".newyear" />
+        <activity android:name=".thevinyls" />
+        <!--<activity android:name=".splash">-->
+
+        <!--</activity>-->
     </application>
 
 </manifest>

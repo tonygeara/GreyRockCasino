@@ -24,11 +24,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.util.PlatformVersion;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -48,20 +51,30 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener , OnMapReadyCallback {
+        implements NavigationView.OnNavigationItemSelectedListener  {
     private static final String TAG = "MAINACTIVITY";
     public static GoogleMap mMap;
+
     Timer timer;
-    Timer timer2;
-    Timer timer3;
-    Timer timer4;
+
     private TextView textView;
     private TextView textView2;
+    private TextView textView3;
+    private TextView textView4;
+
+    private ImageView image1;
+    private ImageView image2;
+    private ImageView image3;
+
 
     public static String bon = "";
     public static String badb = "";
     Button notification ;
     String CHANNEL_ID = "my_channel_02";
+
+    Button eventb,bingob,gamingb,restaurantb,pokerb;
+
+
 
 
 
@@ -71,50 +84,125 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+//        Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
 
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.setTitle("");
+        TextView mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
+
         // call fragment map
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+//        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+//                .findFragmentById(R.id.map);
+//        mapFragment.getMapAsync(this);
 
         setSupportActionBar(toolbar);
-        Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
 
         createNotificationChannel();
+//        image1 = (ImageView)findViewById(R.id.imageView17);
+//        image1.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Animation aniSlide = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.zoomin);
+//                image1.startAnimation(aniSlide);
+//            }
+//        });
+//        image2 = (ImageView)findViewById(R.id.imageView18);
+//        image2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Animation aniSlide = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.zoomin);
+//                image2.startAnimation(aniSlide);
+//            }
+//        });
+//        image3 = (ImageView)findViewById(R.id.imageView19);
+//        image3.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Animation aniSlide = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.zoomin);
+//                image3.startAnimation(aniSlide);
+//            }
+//        });
 
-        final ViewPager viewPager1 = (ViewPager)findViewById(R.id.pager1);
-        viewPager1.setMinimumHeight(50);
-        viewPager1.setMinimumWidth(25);
-        ParserTask task = new ParserTask();
-        task.execute();
+
+//        final ViewPager viewPager1 = (ViewPager)findViewById(R.id.pager1);
+//        viewPager1.setMinimumHeight(50);
+//        viewPager1.setMinimumWidth(25);
+//        ParserTask task = new ParserTask();
+//        task.execute();
 
 
-        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
-        viewPager1.setAdapter(viewPagerAdapter);
+//        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
+//        viewPager1.setAdapter(viewPagerAdapter);
 
 //
 
-        TimerTask timerTask = new TimerTask() {
-                @Override
-                public void run() {
-                    viewPager1.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            viewPager1.setCurrentItem(viewPager1.getCurrentItem() + 1);
-                            if (viewPager1.getCurrentItem() == 6 ){
-                                viewPager1.setCurrentItem(0);
-                            }
-                        }
-                    });
-                }
-            };
-            timer = new Timer();
-            timer.schedule(timerTask, 3000, 4000);
+//        TimerTask timerTask = new TimerTask() {
+//                @Override
+//                public void run() {
+//                    viewPager1.post(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            viewPager1.setCurrentItem(viewPager1.getCurrentItem() + 1);
+//                            if (viewPager1.getCurrentItem() == 6 ){
+//                                viewPager1.setCurrentItem(0);
+//                            }
+//                        }
+//                    });
+//                }
+//            };
+//            timer = new Timer();
+//            timer.schedule(timerTask, 3000, 4000);
 
 
 
 
+
+        eventb = (Button)findViewById(R.id.events);
+        pokerb = (Button)findViewById(R.id.poker);
+        restaurantb = (Button)findViewById(R.id.restaurant);
+        gamingb = (Button)findViewById(R.id.gaming);
+        bingob = (Button)findViewById(R.id.bingo);
+
+        eventb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),eventsrecyclerview.class);
+                startActivity(intent);
+
+            }
+        });
+
+        pokerb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),poker.class);
+                startActivity(intent);
+            }
+        });
+
+        restaurantb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),valleyrestaurant.class);
+                startActivity(intent);
+            }
+        });
+
+        gamingb.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),gamingcasino.class);
+                startActivity(intent);
+            }
+        });
+
+        bingob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(),bingo.class);
+                startActivity(intent);
+            }
+        });
 
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -140,24 +228,24 @@ public class MainActivity extends AppCompatActivity
             super.onBackPressed();
         }
     }
-    @Override
-    public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
-        mMap.setBuildingsEnabled(true);
-        mMap.setMinZoomPreference(6.0f);
-        mMap.setMaxZoomPreference(18.0f);
-
-        // Add a marker in Sydney and move the camera
-        LatLng greyrock = new LatLng(47.373417  , -68.306244);
-        mMap.addMarker(new MarkerOptions().position(greyrock).title("Grey Rock Casino"));
-        float zoomlevel = 16.0f;
-        mMap.getUiSettings().setZoomControlsEnabled(true);
-        mMap.getUiSettings().setMyLocationButtonEnabled(true);
-        mMap.getUiSettings().setMapToolbarEnabled(true);
-        mMap.getUiSettings().setAllGesturesEnabled(true);
-
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(greyrock,zoomlevel));
-    }
+//    @Override
+//    public void onMapReady(GoogleMap googleMap) {
+//        mMap = googleMap;
+//        mMap.setBuildingsEnabled(true);
+//        mMap.setMinZoomPreference(6.0f);
+//        mMap.setMaxZoomPreference(18.0f);
+//
+//        // Add a marker in Sydney and move the camera
+//        LatLng greyrock = new LatLng(47.373417  , -68.306244);
+//        mMap.addMarker(new MarkerOptions().position(greyrock).title("Grey Rock Casino"));
+//        float zoomlevel = 16.0f;
+//        mMap.getUiSettings().setZoomControlsEnabled(true);
+//        mMap.getUiSettings().setMyLocationButtonEnabled(true);
+//        mMap.getUiSettings().setMapToolbarEnabled(true);
+//        mMap.getUiSettings().setAllGesturesEnabled(true);
+//
+//        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(greyrock,zoomlevel));
+//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -189,6 +277,7 @@ public class MainActivity extends AppCompatActivity
         else if (id == R.id.action_exit) {
             finish();
             System.exit(0);
+
         }
 
         return super.onOptionsItemSelected(item);
@@ -269,24 +358,31 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.Promotions) {
-/** has to be done */
+            Intent intent = new Intent(getApplicationContext(),rewardsRecyclerview.class);
+            startActivity(intent);
         } else if (id == R.id.proClaim) {
             Intent intent = new Intent(getApplicationContext(),rewards.class);
             startActivity(intent);
 
         } else if (id == R.id.Proabout) {
+            Intent intent = new Intent(getApplicationContext(),rewardsabout.class);
+            startActivity(intent);
 
-
-/** has to be done */
         }else if (id == R.id.about) {
-/** has to be done */
+            Intent intent = new Intent(getApplicationContext(),careersabout.class);
+            startActivity(intent);
+
         }else if (id == R.id.Jobs) {
-/** has to be done */
+            Intent intent = new Intent(getApplicationContext(),availableJobsrecycler.class);
+            startActivity(intent);
 
         }else if (id == R.id.Events) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                sendnotification();
-            }
+//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//                sendnotification();
+//            }
+            Intent intent = new Intent(getApplicationContext(),eventsrecyclerview.class);
+            startActivity(intent);
+
 
         }
 
@@ -299,7 +395,7 @@ public class MainActivity extends AppCompatActivity
     protected void onDestroy() {
 
         Log.i(TAG, "onDestroy: CALLLEEEEDDDDD");
-        timer.cancel();
+//        timer.cancel();
         super.onDestroy();
         Log.i(TAG, "onDestroy: FINISHEDDDDDDD");
 
@@ -412,25 +508,29 @@ public class MainActivity extends AppCompatActivity
     @SuppressLint("SetTextI18n")
     public void displayResults(Pair<String, String> pair) {
 
-        textView = findViewById(R.id.result);
+//        textView = findViewById(R.id.result);
         textView2 = findViewById(R.id.result2);
+//        textView3 = findViewById(R.id.result3);
+//        textView4 = findViewById(R.id.result4);
         StringBuilder sb = new StringBuilder("Bonanza ");
         sb.append(pair.first).append(" BadBeat ").append(pair.second);
         textView.setText("$" + badb);
-        textView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                textView.startAnimation(AnimationUtils.loadAnimation(MainActivity.this,R.anim.anim));
-            }
-        });
+//        textView3.setText("$" + badb);
+//        textView.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                textView.startAnimation(AnimationUtils.loadAnimation(MainActivity.this,R.anim.anim));
+//            }
+//        });
 
         textView2.setText("$" + bon);
-        textView2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                textView2.startAnimation(AnimationUtils.loadAnimation(MainActivity.this,R.anim.anim));
-            }
-        });
+//        textView4.setText("$" + bon);
+//        textView2.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                textView2.startAnimation(AnimationUtils.loadAnimation(MainActivity.this,R.anim.anim));
+//            }
+//        });
 
 
     }

@@ -4,111 +4,194 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gamingcasino"
     android:visibility="visible"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".MainActivity"
     tools:showIn="@layout/app_bar_main">
 
     <ScrollView
+        android:id="@+id/scrollView2"
+        style="@android:style/Widget.DeviceDefault.Light.ScrollView"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
+        android:clipToPadding="false"
+        android:fillViewport="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintVertical_bias="0.0">
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent">
 
 
-            <android.support.v4.view.ViewPager
-                android:id="@+id/pager1"
+            <!--<android.support.v4.view.ViewPager-->
+            <!--android:id="@+id/pager1"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="232dp"-->
+            <!--android:layout_marginTop="32dp"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintHorizontal_bias="1.0"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toTopOf="parent"-->
+            <!--tools:ignore="MissingConstraints" />-->
+
+
+            <!--<Button-->
+            <!--android:id="@+id/button4"-->
+            <!--style="@android:style/Widget.Holo.Light.Button.Inset"-->
+            <!--android:layout_width="122dp"-->
+            <!--android:layout_height="67dp"-->
+            <!--android:layout_marginEnd="8dp"-->
+            <!--android:text="Poker"-->
+            <!--app:layout_constraintBaseline_toBaselineOf="@+id/button6"-->
+            <!--app:layout_constraintEnd_toStartOf="@+id/button6"-->
+            <!--app:layout_constraintHorizontal_bias="0.0"-->
+            <!--app:layout_constraintStart_toStartOf="parent" />-->
+
+            <!--<Button-->
+            <!--android:id="@+id/button5"-->
+            <!--style="@android:style/Widget.DeviceDefault.Light.Button.Inset"-->
+            <!--android:layout_width="122dp"-->
+            <!--android:layout_height="67dp"-->
+            <!--android:layout_marginTop="8dp"-->
+            <!--android:text="Bingo"-->
+            <!--app:layout_constraintBottom_toTopOf="@+id/map"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toBottomOf="@+id/button6" />-->
+
+            <!--<Button-->
+            <!--android:id="@+id/button6"-->
+            <!--style="@android:style/Widget.DeviceDefault.Button.Colored"-->
+            <!--android:layout_width="122dp"-->
+            <!--android:layout_height="67dp"-->
+            <!--android:layout_marginTop="24dp"-->
+            <!--android:text="Events"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintTop_toBottomOf="@+id/button7"-->
+            <!--tools:ignore="NewApi" />-->
+
+            <!--<Button-->
+            <!--android:id="@+id/button7"-->
+            <!--style="@android:style/Widget.Material.Button.Borderless"-->
+            <!--android:layout_width="122dp"-->
+            <!--android:layout_height="67dp"-->
+            <!--android:layout_marginStart="120dp"-->
+            <!--android:text="Casino"-->
+            <!--android:textSize="24sp"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toTopOf="parent"-->
+            <!--tools:ignore="UnknownId" />-->
+
+            <!--<fragment-->
+            <!--android:id="@+id/map"-->
+            <!--android:name="com.google.android.gms.maps.SupportMapFragment"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="267dp"-->
+            <!--android:layout_marginTop="32dp"-->
+            <!--app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintHorizontal_bias="0.0"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toBottomOf="@+id/button5"-->
+            <!--tools:context=".MapsActivity" />-->
+
+            <!--<View-->
+            <!--android:id="@+id/view"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="1dp"-->
+            <!--android:background="@android:color/darker_gray"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintHorizontal_bias="1.0"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--tools:layout_editor_absoluteY="155dp" />-->
+
+            <Button
+                android:id="@+id/poker"
+                android:layout_width="103dp"
+                android:layout_height="56dp"
+                android:layout_marginBottom="11dp"
+                android:text="Poker"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/gaming"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+            <Button
+                android:id="@+id/restaurant"
+                android:layout_width="188dp"
+                android:layout_height="56dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="8dp"
+                android:text="Restaurants"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="@+id/constraintLayout3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.525"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gaming" />
+
+            <Button
+                android:id="@+id/bingo"
+                android:layout_width="103dp"
+                android:layout_height="56dp"
+                android:text="Bingo"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+            <Button
+                android:id="@+id/events"
+                android:layout_width="103dp"
+                android:layout_height="54dp"
+                android:layout_marginTop="12dp"
+                android:text="Events"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bingo" />
+
+            <Button
+                android:id="@+id/gaming"
+                android:layout_width="103dp"
+                android:layout_height="56dp"
+                android:layout_marginEnd="368dp"
+                android:text="Gaming"
+                android:textStyle="bold"
+                app:layout_constraintBaseline_toBaselineOf="@+id/events"
+                app:layout_constraintEnd_toStartOf="@+id/events"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/constraintLayout"
                 android:layout_width="0dp"
-                android:layout_height="232dp"
-                android:layout_marginTop="32dp"
+                android:layout_height="343dp"
+                android:background="@drawable/gamingcasinolastoneeeee"
+                app:layout_constraintBottom_toTopOf="@+id/poker"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="MissingConstraints" />
+                app:layout_constraintVertical_bias="0.0">
 
-            <ImageView
-                android:id="@+id/imageView4"
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/constraintLayout3"
                 android:layout_width="0dp"
-                android:layout_height="97dp"
-                android:layout_marginTop="104dp"
-                android:layout_marginBottom="8dp"
-                app:layout_constraintBottom_toTopOf="@+id/imageView5"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/pager1"
-                app:srcCompat="@drawable/badbeattt" />
-
-            <TextView
-                android:id="@+id/result"
-                android:layout_width="134dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:text="TextView"
-                android:textColor="@android:color/holo_red_dark"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView4"
-                app:layout_constraintEnd_toEndOf="@+id/imageView4"
-                app:layout_constraintHorizontal_bias="0.755"
-                app:layout_constraintStart_toStartOf="@+id/imageView4"
-                app:layout_constraintTop_toTopOf="@+id/imageView4"
-                app:layout_constraintVertical_bias="0.484" />
-
-            <ImageView
-                android:id="@+id/imageView5"
-                android:layout_width="wrap_content"
-                android:layout_height="97dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:contentDescription="TODO"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView4"
-                app:srcCompat="@drawable/bonanza" />
-
-            <TextView
-                android:id="@+id/result2"
-                android:layout_width="134dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:text="TextView"
-                android:textAlignment="center"
-                android:textColor="@android:color/holo_orange_light"
-                android:textSize="30sp"
-                android:textStyle="bold"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView5"
-                app:layout_constraintEnd_toEndOf="@+id/imageView5"
-                app:layout_constraintHorizontal_bias="0.79"
-                app:layout_constraintStart_toStartOf="@+id/imageView5"
-                app:layout_constraintTop_toTopOf="@+id/imageView5"
-                app:layout_constraintVertical_bias="0.568" />
-
-            <fragment xmlns:tools="http://schemas.android.com/tools"
-                android:id="@+id/map"
-                android:name="com.google.android.gms.maps.SupportMapFragment"
-                android:layout_width="match_parent"
-                android:layout_height="295dp"
-                android:layout_marginTop="8dp"
+                android:layout_height="256dp"
+                android:background="@drawable/gamingcasinolastoneeeeeeeeeeeeeeeee"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView5"
-                tools:context=".MapsActivity" />
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
+            </android.support.constraint.ConstraintLayout>
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>

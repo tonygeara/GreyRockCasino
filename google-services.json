@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1088394321500",
+    "firebase_url": "https://greyrock-faf66.firebaseio.com",
+    "project_id": "greyrock-faf66",
+    "storage_bucket": "greyrock-faf66.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1088394321500:android:952c6e09ee3f6a07",
+        "android_client_info": {
+          "package_name": "com.example.tony.greycasino"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1088394321500-vgkin0tjvnt5ovg18p7els8i6q337ve9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3sBlG8RISWCm23ks2yes0D9v69Tidvh8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
