@@ -88,36 +88,36 @@ mRef = mFirebaseDatabase.getReference();
                         // whenever data at this location is updated.
 
 
-
-                       String val = member.getText().toString();
-                        int  memb = Integer.valueOf(val);
-
-                        ArrayList<String> list = new ArrayList<>();
-                        ArrayList<String> firstnamelist = new ArrayList<>();
-
-
-                        Log.i("DATASNAPSHOT", "onDataChange: " + dataSnapshot.getChildrenCount()+1);
-                       for (int i = 0; i <= dataSnapshot.getChildrenCount(); i++){
-
-                           String check = String.valueOf(dataSnapshot.child(String.valueOf(i)).child("PlayerID").getValue());
-                           list.add(check);
-                           checkname = String.valueOf(dataSnapshot.child(String.valueOf(i)).child("FirstName").getValue());
-//                           Log.i("FIRSTNAME IS ", "onDataChange: " + checkname);
-                           firstnamelist.add(checkname);
-                           Log.i("NAME IS HEERRREEEEE", "onDataChange: " + checkname);
-
-                               }
-                       if(list.contains(String.valueOf(memb))){
-
-                           congratulations.setVisibility(View.VISIBLE);
-                           u++;
-
-                       } else if (firstnamelist.contains(String.valueOf("GUY").toLowerCase())){
-                           Toast.makeText(getApplicationContext(),"Tony is hereee",Toast.LENGTH_LONG).show();
-                       }
-                       else if (!list.contains(String.valueOf(memb))){
-                           Toast.makeText(getApplicationContext(),"Please enter a valid ID number....",Toast.LENGTH_LONG).show();
-                       }
+//
+//                       String val = member.getText().toString();
+//                        int  memb = Integer.valueOf(val);
+//
+//                        ArrayList<String> list = new ArrayList<>();
+//                        ArrayList<String> firstnamelist = new ArrayList<>();
+//
+//
+//                        Log.i("DATASNAPSHOT", "onDataChange: " + dataSnapshot.getChildrenCount()+1);
+//                       for (int i = 0; i <= dataSnapshot.getChildrenCount(); i++){
+//
+//                           String check = String.valueOf(dataSnapshot.child(String.valueOf(i)).child("PlayerID").getValue());
+//                           list.add(check);
+//                           checkname = String.valueOf(dataSnapshot.child(String.valueOf(i)).child("FirstName").getValue());
+////                           Log.i("FIRSTNAME IS ", "onDataChange: " + checkname);
+//                           firstnamelist.add(checkname);
+//                           Log.i("NAME IS HEERRREEEEE", "onDataChange: " + checkname);
+//
+//                               }
+//                       if(list.contains(String.valueOf(memb))){
+//
+//                           congratulations.setVisibility(View.VISIBLE);
+//                           u++;
+//
+//                       } else if (firstnamelist.contains(String.valueOf("GUY").toLowerCase())){
+//                           Toast.makeText(getApplicationContext(),"Tony is hereee",Toast.LENGTH_LONG).show();
+//                       }
+//                       else if (!list.contains(String.valueOf(memb))){
+//                           Toast.makeText(getApplicationContext(),"Please enter a valid ID number....",Toast.LENGTH_LONG).show();
+//                       }
                     }
 
                     @Override

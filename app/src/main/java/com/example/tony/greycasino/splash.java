@@ -1,5 +1,6 @@
 package com.example.tony.greycasino;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Handler;
@@ -14,6 +15,7 @@ import java.util.Objects;
 public class splash extends AppCompatActivity {
 
     ProgressBar progressBar;
+    @SuppressLint("NewApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
