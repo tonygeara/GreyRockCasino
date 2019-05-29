@@ -7,4 +7,7 @@
     <string name="channel_name">channel_name_Tony</string>
     <string name="channel_description">no_description</string>
     <string name="title_activity_maps">Map</string>
+    <string name="contact">Contact</string>
+    <string name="hours_of_operation">Hours of Operation</string>
+    <string name="about_grey_rock_casino">About Grey Rock Casino</string>
 </resources>

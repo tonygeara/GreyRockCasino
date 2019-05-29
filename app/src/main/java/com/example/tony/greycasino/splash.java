@@ -15,6 +15,7 @@ import java.util.Objects;
 public class splash extends AppCompatActivity {
 
     ProgressBar progressBar;
+
     @SuppressLint("NewApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,15 +25,19 @@ public class splash extends AppCompatActivity {
          * and close this Splash-Screen after some seconds.*/
         progressBar = findViewById(R.id.progressBar);
         progressBar.drawableHotspotChanged(1,4);
-        new Handler().postDelayed(new Runnable(){
-            @Override
-            public void run() {
-                /* Create an Intent that will start the Menu-Activity. */
-                Intent mainIntent = new Intent(splash.this,MainActivity.class);
-                startActivity(mainIntent);
 
-            }
-        }, 1000);
+            new Handler().postDelayed(new Runnable(){
+                @Override
+                public void run() {
+                    /* Create an Intent that will start the Menu-Activity. */
+                    Intent mainIntent = new Intent(splash.this,MainActivity.class);
+                    startActivity(mainIntent);
+
+                }
+            }, 1000);
+
+
+
 
         progressBar.drawableHotspotChanged(3,6);
 

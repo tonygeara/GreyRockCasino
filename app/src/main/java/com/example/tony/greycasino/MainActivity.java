@@ -38,6 +38,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.firebase.database.core.Platform;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -84,78 +85,13 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(false);
-
         final Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("");
         TextView mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
 
-        // call fragment map
-//        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-//                .findFragmentById(R.id.map);
-//        mapFragment.getMapAsync(this);
-
         setSupportActionBar(toolbar);
 
         createNotificationChannel();
-//        image1 = (ImageView)findViewById(R.id.imageView17);
-//        image1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Animation aniSlide = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.zoomin);
-//                image1.startAnimation(aniSlide);
-//            }
-//        });
-//        image2 = (ImageView)findViewById(R.id.imageView18);
-//        image2.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Animation aniSlide = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.zoomin);
-//                image2.startAnimation(aniSlide);
-//            }
-//        });
-//        image3 = (ImageView)findViewById(R.id.imageView19);
-//        image3.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Animation aniSlide = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.zoomin);
-//                image3.startAnimation(aniSlide);
-//            }
-//        });
-
-
-//        final ViewPager viewPager1 = (ViewPager)findViewById(R.id.pager1);
-//        viewPager1.setMinimumHeight(50);
-//        viewPager1.setMinimumWidth(25);
-//        ParserTask task = new ParserTask();
-//        task.execute();
-
-
-//        ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(this);
-//        viewPager1.setAdapter(viewPagerAdapter);
-
-//
-
-//        TimerTask timerTask = new TimerTask() {
-//                @Override
-//                public void run() {
-//                    viewPager1.post(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            viewPager1.setCurrentItem(viewPager1.getCurrentItem() + 1);
-//                            if (viewPager1.getCurrentItem() == 6 ){
-//                                viewPager1.setCurrentItem(0);
-//                            }
-//                        }
-//                    });
-//                }
-//            };
-//            timer = new Timer();
-//            timer.schedule(timerTask, 3000, 4000);
-
-
-
-
 
         eventb = (Button)findViewById(R.id.events);
         pokerb = (Button)findViewById(R.id.poker);
@@ -228,24 +164,7 @@ public class MainActivity extends AppCompatActivity
             super.onBackPressed();
         }
     }
-//    @Override
-//    public void onMapReady(GoogleMap googleMap) {
-//        mMap = googleMap;
-//        mMap.setBuildingsEnabled(true);
-//        mMap.setMinZoomPreference(6.0f);
-//        mMap.setMaxZoomPreference(18.0f);
-//
-//        // Add a marker in Sydney and move the camera
-//        LatLng greyrock = new LatLng(47.373417  , -68.306244);
-//        mMap.addMarker(new MarkerOptions().position(greyrock).title("Grey Rock Casino"));
-//        float zoomlevel = 16.0f;
-//        mMap.getUiSettings().setZoomControlsEnabled(true);
-//        mMap.getUiSettings().setMyLocationButtonEnabled(true);
-//        mMap.getUiSettings().setMapToolbarEnabled(true);
-//        mMap.getUiSettings().setAllGesturesEnabled(true);
-//
-//        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(greyrock,zoomlevel));
-//    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -269,15 +188,9 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(getApplicationContext(),contactinformationmenu.class);
             startActivity(intent);
         }
-
         else if (id == R.id.action_help) {
             Intent intent = new Intent(getApplicationContext(),aboutcasinomenu.class);
             startActivity(intent);
-        }
-        else if (id == R.id.action_exit) {
-            finish();
-            System.exit(0);
-
         }
 
         return super.onOptionsItemSelected(item);
@@ -420,25 +333,25 @@ public class MainActivity extends AppCompatActivity
     }
 
     // sending notification to users
-    @RequiresApi(api = Build.VERSION_CODES.O)
-    public void sendnotification() {
+//    @RequiresApi(api = Build.VERSION_CODES.O)
+//    public void sendnotification() {
+//
+//        Log.d(TAG, "sendnotification: ON");
+//            NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, CHANNEL_ID)
+//                    .setSmallIcon(R.drawable.logo)
+//                    .setContentTitle("GREY ROCK CASINO")
+//                    .setContentText("GET READY FOR OUR NEW COMING EVENTS AT GREY ROCK CASINO, CELEBRATE CHRISTMAS AND NEW YEAR EVE WITH US AND ENTER THE DRAW TO WIN A GREAT PRIZES . WE ARE WAITING FOR YOU ...")
+//                    .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+//
+//        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+//        notificationManager.notify(1,mBuilder.build());
+//
+//            Toast.makeText(getApplicationContext(),"Notification received ",Toast.LENGTH_LONG).show();
+//
+//
+//        Log.d(TAG, "sendnotification: OFF");
 
-        Log.d(TAG, "sendnotification: ON");
-            NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this, CHANNEL_ID)
-                    .setSmallIcon(R.drawable.logo)
-                    .setContentTitle("GREY ROCK CASINO")
-                    .setContentText("GET READY FOR OUR NEW COMING EVENTS AT GREY ROCK CASINO, CELEBRATE CHRISTMAS AND NEW YEAR EVE WITH US AND ENTER THE DRAW TO WIN A GREAT PRIZES . WE ARE WAITING FOR YOU ...")
-                    .setPriority(NotificationCompat.PRIORITY_DEFAULT);
-
-        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
-        notificationManager.notify(1,mBuilder.build());
-
-            Toast.makeText(getApplicationContext(),"Notification received ",Toast.LENGTH_LONG).show();
-
-
-        Log.d(TAG, "sendnotification: OFF");
-
-    }
+//    }
 
 
 // dial th ephone number of casino

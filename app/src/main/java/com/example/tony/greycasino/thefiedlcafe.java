@@ -52,10 +52,6 @@ public class thefiedlcafe extends AppCompatActivity {
             Intent intent = new Intent(getApplicationContext(),aboutcasinomenu.class);
             startActivity(intent);
         }
-        else if (id == R.id.action_exit) {
-            finish();
-            System.exit(0);
-        }
 
         return super.onOptionsItemSelected(item);
     }
