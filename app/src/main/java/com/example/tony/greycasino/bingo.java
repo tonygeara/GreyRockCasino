@@ -1,6 +1,8 @@
 package com.example.tony.greycasino;
 
 import android.annotation.SuppressLint;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +10,7 @@ import android.util.Log;
 import android.util.Pair;
 import android.view.View;
 import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -27,10 +30,12 @@ import java.io.IOException;
 
 public class bingo extends AppCompatActivity implements OnMapReadyCallback {
     public static GoogleMap mMap;
+    Events event = new Events("", "", "", "", "","", "","","");
 
     public static String bon = "";
     public static String badb = "";
     TextView textView2;
+    ImageView image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +103,9 @@ public class bingo extends AppCompatActivity implements OnMapReadyCallback {
         protected Pair<String, String> doInBackground(Void... voids) {
 
             try {
+                Document mBlogDocument = Jsoup.connect("http://www.greyrockcasino.com/en/bingo/playing-bingo-at-grey-rock-casino").get();
+                event.setThumbnail(mBlogDocument.select("div[class=uk-align-medium-left]").eq(0).select("img").attr("src"));
+
                 Document document = Jsoup.connect(URL).get();
                 // select document
                 Elements bonanzaElements = document.select(DIV_BONANZA);

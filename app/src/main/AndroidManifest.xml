@@ -57,10 +57,12 @@
         <activity android:name=".availableJobsrecycler" />
         <activity android:name=".ActivityAvailableJobs" />
         <activity android:name=".ActivityJobDetails" />
-
+                <activity android:name=".Promotita" />
         <activity android:name=".ActivityShowPdfFiles" />
         <activity android:name=".ActivityEvents" />
         <activity android:name=".ActivityEventDetails" />
+        <activity android:name=".PokerPromo" />
+        <activity android:name=".PokerTour" />
 
 
 

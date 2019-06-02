@@ -33,6 +33,7 @@ public class poker extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_poker);
+
         ParserTask parserTask = new ParserTask();
         parserTask.execute();
     }

@@ -51,10 +51,10 @@
                     android:id="@+id/Whatishappeningbingo"
                     android:icon="@drawable/search"
                     android:title="What's happening" />
-                <item
-                    android:id="@+id/pricingbingo"
-                    android:icon="@drawable/winner"
-                    android:title="Pricing" />
+                <!--<item-->
+                    <!--android:id="@+id/pricingbingo"-->
+                    <!--android:icon="@drawable/winner"-->
+                    <!--android:title="Pricing" />-->
 
             </menu>
         </item>

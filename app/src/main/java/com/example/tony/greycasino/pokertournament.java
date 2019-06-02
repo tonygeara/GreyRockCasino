@@ -18,6 +18,11 @@ import org.jsoup.select.Elements;
 
 import java.io.IOException;
 
+
+/*
+*
+* Created by Tony for bad beat and bonanza
+ */
 public class pokertournament extends AppCompatActivity {
     public static String bon = "";
     public static String badb = "";

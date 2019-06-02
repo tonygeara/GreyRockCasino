@@ -114,7 +114,7 @@ If you have any questions, you can reach us in the Poker Room during our operati
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView20"
-                app:srcCompat="@drawable/activitypokernovember" />
+                app:srcCompat="@drawable/may" />
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>

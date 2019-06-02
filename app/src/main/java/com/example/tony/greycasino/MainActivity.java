@@ -50,7 +50,9 @@ import java.io.IOException;
 import java.util.Objects;
 import java.util.Timer;
 import java.util.TimerTask;
-
+/*
+* Created by Tony G January 1, 2019
+ */
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener  {
     private static final String TAG = "MAINACTIVITY";
@@ -231,14 +233,14 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(getApplicationContext(),bingo.class);
             startActivity(intent);
         }else if (id == R.id.Whatishappeningbingo) {
-            Intent intent = new Intent(getApplicationContext(),bingowhatshappening.class);
-            startActivity(intent);
-
-        }else if (id == R.id.pricingbingo) {
-
-            Intent intent = new Intent(getApplicationContext(),pricingbingo.class);
+            Intent intent = new Intent(getApplicationContext(), bingowhatshappening.class);
             startActivity(intent);
         }
+//        }else if (id == R.id.pricingbingo) {
+//
+//            Intent intent = new Intent(getApplicationContext(),pricingbingo.class);
+//            startActivity(intent);
+//        }
 
 
 
@@ -251,12 +253,12 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
 
         }else if (id == R.id.Pokertournament) {
-            Intent intent = new Intent(getApplicationContext(),pokertournament.class);
+            Intent intent = new Intent(getApplicationContext(),PokerTour.class);
             startActivity(intent);
 
 
         }else if (id == R.id.Promotionspoker) {
-            Intent intent = new Intent(getApplicationContext(),promotionsrecyclerview.class);
+            Intent intent = new Intent(getApplicationContext(),PokerPromo.class);
             startActivity(intent);
 
         }else if (id == R.id.Badbeat) {
@@ -272,7 +274,7 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
 
         } else if (id == R.id.Promotions) {
-            Intent intent = new Intent(getApplicationContext(),rewardsRecyclerview.class);
+            Intent intent = new Intent(getApplicationContext(),Promotita.class);
             startActivity(intent);
         } else if (id == R.id.proClaim) {
             Intent intent = new Intent(getApplicationContext(),rewards.class);
@@ -290,7 +292,8 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(getApplicationContext(), ActivityAvailableJobs.class);
             startActivity(intent);
         }else if (id == R.id.Events) {
-
+            Intent intent = new Intent(getApplicationContext(), ActivityEvents.class);
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

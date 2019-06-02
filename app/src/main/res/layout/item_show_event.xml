@@ -34,14 +34,14 @@
             android:layout_marginStart="@dimen/margin_standard"
             android:textStyle="bold"/>
 
-        <TextView android:id="@+id/labelEventDate"
+        <TextView
+            android:id="@+id/labelEventDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/text_small"
             android:layout_marginStart="@dimen/margin_standard"
+            android:textSize="@dimen/text_small"
             app:layout_constraintStart_toEndOf="@id/ivThumbnail"
-            app:layout_constraintTop_toBottomOf="@id/tvTitle"
-            android:text="EVENT DATE:"/>
+            app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
         <TextView android:id="@+id/tvEventDate"
             android:layout_width="0dp"
