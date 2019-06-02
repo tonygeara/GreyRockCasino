@@ -98,7 +98,7 @@ public class ActivityEventDetails extends AppCompatActivity implements IBackButt
 
         tvTitle.setText(selectedEvent.getTitle());
         tvItemTitle.setText(selectedEvent.getTitle());
-        tvEventDate.setText("EVENT DATE: ${selectedEvent.eventDate}");
+//        tvEventDate.setText("EVENT DATE: ${selectedEvent.eventDate}");
 
         tvDetails.setText(Html.fromHtml(selectedEvent.getDetails()));
     }
@@ -125,7 +125,7 @@ public class ActivityEventDetails extends AppCompatActivity implements IBackButt
                 tvAddress.setText(Html.fromHtml(selectedEvent.getAddressHtml()));
                 tvPhone.setText(selectedEvent.getPhoneNo());
                 tvEmail.setText(selectedEvent.getEmail());
-
+                tvEventDate.setText(selectedEvent.getEventDate());
 
             }
 
