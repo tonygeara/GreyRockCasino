@@ -102,8 +102,9 @@ public class MainActivity extends AppCompatActivity
         eventb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),eventsrecyclerview.class);
+                Intent intent = new Intent(getApplicationContext(), ActivityEvents.class);
                 startActivity(intent);
+
 
             }
         });
@@ -286,16 +287,9 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
 
         }else if (id == R.id.Jobs) {
-            Intent intent = new Intent(getApplicationContext(),availableJobsrecycler.class);
+            Intent intent = new Intent(getApplicationContext(), ActivityAvailableJobs.class);
             startActivity(intent);
-
         }else if (id == R.id.Events) {
-//            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//                sendnotification();
-//            }
-            Intent intent = new Intent(getApplicationContext(),eventsrecyclerview.class);
-            startActivity(intent);
-
 
         }
 

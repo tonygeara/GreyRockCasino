@@ -55,7 +55,16 @@
         <activity android:name=".thefiedlcafe" />
         <activity android:name=".valleyrestaurant" />
         <activity android:name=".availableJobsrecycler" />
-        <activity android:name=".eventsrecyclerview" />
+        <activity android:name=".ActivityAvailableJobs" />
+        <activity android:name=".ActivityJobDetails" />
+
+        <activity android:name=".ActivityShowPdfFiles" />
+        <activity android:name=".ActivityEvents" />
+        <activity android:name=".ActivityEventDetails" />
+
+
+
+
         <!--<activity android:name=".JobViewActivity" />-->
         <activity android:name=".promotions" />
         <!--

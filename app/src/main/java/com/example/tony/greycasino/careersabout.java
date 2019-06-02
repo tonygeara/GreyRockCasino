@@ -44,8 +44,8 @@ public class careersabout extends AppCompatActivity implements OnMapReadyCallbac
         });
 
         RecyclerView mRecyclerView;
-        String[] Items = {"Event Sales & Planning Manager","Restaurant Manager","Cashier/Cage Attendant","Bartender/Server","Poker Dealer","Cook"};
-        String[] Items2 = { "APPLY TODAY!", "APPLY TODAY!", "APPLY TODAY!","APPLY TODAY!","Apply today! No experience needed!\n Training offered by employer.","APPLY TODAY!"};
+        String[] Items = {"Please go to our website to apply or go to Careers/Available Jobs","Thank you"};
+        String[] Items2 = { "APPLY TODAY!", "APPLY TODAY!"};
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerViewcareers);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         mRecyclerView.setAdapter(new AdapterCareers(this,Items,Items2));
